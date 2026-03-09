@@ -13,8 +13,10 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { useNavigate } from 'react-router-dom';
 
 const OrderPage = () => {
+  const navigate = useNavigate();
   const { t } = useLanguage();
   const [showSuccess, setShowSuccess] = useState(false);
   const [form, setForm] = useState({
@@ -220,7 +222,7 @@ const OrderPage = () => {
             </DialogDescription>
           </DialogHeader>
           <button
-            onClick={() => { setShowSuccess(false) }}
+            onClick={() => { setShowSuccess(false); navigate("/"); }}
             className="mt-4 bg-success hover:bg-success/90 text-success-foreground font-bold py-5"
           >
             🏠 होम पेज पर जाएं
