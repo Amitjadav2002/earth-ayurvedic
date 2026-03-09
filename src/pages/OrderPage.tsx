@@ -6,9 +6,17 @@ import productImage from '@/assets/product-image.png';
 import productImage2 from '@/assets/3item.png';
 import { toast } from 'sonner';
 import axios from 'axios'
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 const OrderPage = () => {
   const { t } = useLanguage();
+  const [showSuccess, setShowSuccess] = useState(false);
   const [form, setForm] = useState({
     name: '', phone: '', address: '', city: '', state: '', pincode: '', package: 'pkg1',
   });
@@ -24,6 +32,7 @@ const OrderPage = () => {
     axios.post("https://hook.eu2.make.com/m4qelxfc4wrgl6a31rpxr31ip96s37jv", {
       name: form.name, phone: form.phone, address: form.address, city:form.city, state:form.state, pincode: form.pincode, quantity: form.package
     }).then(() => {
+      setShowSuccess(true);
     setForm({ name: "", phone: "", address: "", city: "", state: "", pincode: "", package: "pkg1" });
     })
 
@@ -185,6 +194,39 @@ const OrderPage = () => {
           </motion.form>
         </div>
       </div>
+      <Dialog open={showSuccess} onOpenChange={setShowSuccess}>
+        <DialogContent className="max-w-lg mx-0 sm:mx-auto text-center p-8">
+          <DialogHeader className="space-y-4">
+            <DialogTitle className="text-2xl md:text-3xl font-bold font-serif text-foreground">
+              🎉 ऑर्डर सफलतापूर्वक कन्फर्म हो गया!
+            </DialogTitle>
+            <DialogDescription asChild>
+              <div className="text-left space-y-4 text-base text-muted-foreground">
+                <p>
+                  धन्यवाद 🙏 आपका Cash on Delivery (COD) ऑर्डर सफलतापूर्वक दर्ज हो चुका है।
+                  आप डिलीवरी के समय भुगतान कर सकते हैं।
+                </p>
+                <p>
+                  📞 हमारी टीम जल्द ही कन्फर्मेशन के लिए कॉल करेगी — कृपया अपना फोन ऑन रखें।
+                  अगर कॉल मिस हो जाए तो कृपया वापस कॉल करें, ताकि आपका ऑर्डर कैंसिल न हो।
+                </p>
+                <p className="font-semibold text-foreground">
+                  🚚 अनुमानित डिलीवरी: 5–7 कार्य दिवस
+                </p>
+                <p className="text-center text-lg font-medium text-primary">
+                  हम पर भरोसा करने के लिए धन्यवाद ❤️
+                </p>
+              </div>
+            </DialogDescription>
+          </DialogHeader>
+          <button
+            onClick={() => { setShowSuccess(false) }}
+            className="mt-4 bg-success hover:bg-success/90 text-success-foreground font-bold py-5"
+          >
+            🏠 होम पेज पर जाएं
+          </button>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
