@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 210 20% 12%;
+
+    --card: 210 20% 98%;
+    --card-foreground: 210 20% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 20% 12%;
+
+    --primary: 160 50% 32%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 35 85% 52%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 15% 95%;
+    --muted-foreground: 210 10% 45%;
+
+    --accent: 160 30% 94%;
+    --accent-foreground: 160 50% 22%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 15% 90%;
+    --input: 210 15% 90%;
+    --ring: 160 50% 32%;
+
+    --radius: 0.75rem;
+
+    --medical-teal: 160 50% 32%;
+    --medical-teal-light: 160 30% 94%;
+    --medical-blue: 200 60% 45%;
+    --medical-green: 142 45% 38%;
+    --trust-gold: 42 85% 55%;
+    --warm-bg: 30 30% 98%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .gradient-hero {
+    background: linear-gradient(160deg, hsl(160 50% 32% / 0.04), hsl(200 60% 45% / 0.03), hsl(0 0% 100%));
+  }
+  .gradient-section {
+    background: linear-gradient(180deg, hsl(0 0% 100%), hsl(160 30% 94% / 0.4));
+  }
+  .gradient-cta {
+    background: linear-gradient(135deg, hsl(160 50% 32%), hsl(160 50% 38%));
+  }
+  .gradient-gold {
+    background: linear-gradient(135deg, hsl(42 85% 55%), hsl(35 85% 52%));
+  }
+  .gradient-medical {
+    background: linear-gradient(135deg, hsl(160 50% 32% / 0.06), hsl(200 60% 45% / 0.04));
+  }
+  .text-gradient-green {
+    background: linear-gradient(135deg, hsl(160 50% 32%), hsl(142 45% 38%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .shadow-medical {
+    box-shadow: 0 4px 24px -4px hsl(210 20% 12% / 0.08), 0 1px 4px hsl(210 20% 12% / 0.04);
+  }
+  .shadow-card {
+    box-shadow: 0 2px 16px -2px hsl(210 20% 12% / 0.06);
+  }
+  .shadow-earth {
+    box-shadow: 0 8px 32px -8px hsl(160 50% 32% / 0.15);
+  }
+  .shadow-cta {
+    box-shadow: 0 6px 20px -4px hsl(160 50% 32% / 0.3);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px hsl(160 50% 32% / 0.2); }
+  50% { box-shadow: 0 0 20px hsl(160 50% 32% / 0.4); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
