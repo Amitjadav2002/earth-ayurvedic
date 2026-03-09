@@ -18,7 +18,6 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
           <Navbar />
           <WhatsAppButton />
           <Routes>
@@ -26,7 +25,6 @@ const App = () => (
             <Route path="/order" element={<OrderPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
       </TooltipProvider>
     </LanguageProvider>
   </QueryClientProvider>
