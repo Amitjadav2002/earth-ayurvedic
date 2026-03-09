@@ -21,7 +21,7 @@ const OrderPage = () => {
     // const encoded = encodeURIComponent(msg);
     // window.open(`https://wa.me/918460169603?text=${encoded}`, '_blank');
 
-    axios.post("https://hook.eu2.make.com/92phfvloqy5h4l2ybfjrccbcst3kxj9n", {
+    axios.post("https://hook.eu2.make.com/m4qelxfc4wrgl6a31rpxr31ip96s37jv", {
       name: form.name, phone: form.phone, address: form.address, pincode: form.pincode, quantity: form.package
     }).then(() => {
     setForm({ name: "", phone: "", address: "", city: "", state: "", pincode: "", package: "pkg1" });
