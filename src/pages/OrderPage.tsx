@@ -5,6 +5,7 @@ import { ShieldCheck, Truck, Package } from 'lucide-react';
 import productImage from '@/assets/product-image.png';
 import productImage2 from '@/assets/3item.png';
 import { toast } from 'sonner';
+import axios from 'axios'
 
 const OrderPage = () => {
   const { t } = useLanguage();
@@ -15,11 +16,18 @@ const OrderPage = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Build WhatsApp message
-    const pkg = form.package === 'pkg1' ? 'Pills + Syrup (₹1000)' : 'Pills + Syrup + Powder (₹1300)';
-    const msg = `Hello! I need information about the medicine.`;
-    const encoded = encodeURIComponent(msg);
-    window.open(`https://wa.me/918460169603?text=${encoded}`, '_blank');
-    toast.success('Order sent via WhatsApp!');
+    // const pkg = form.package === 'pkg1' ? 'Pills + Syrup (₹1000)' : 'Pills + Syrup + Powder (₹1300)';
+    // const msg = `Hello! I need information about the medicine.`;
+    // const encoded = encodeURIComponent(msg);
+    // window.open(`https://wa.me/918460169603?text=${encoded}`, '_blank');
+
+    axios.post("https://hook.eu2.make.com/92phfvloqy5h4l2ybfjrccbcst3kxj9n", {
+      name: form.name, phone: form.phone, address: form.address, pincode: form.pincode, quantity: form.package
+    }).then(() => {
+    setForm({ name: "", phone: "", address: "", city: "", state: "", pincode: "", package: "pkg1" });
+    })
+
+    toast.success('Ordered Succesfully!');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
